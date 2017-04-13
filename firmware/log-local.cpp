@@ -68,16 +68,16 @@ const char* LogLocalHandler::extractFuncName(const char *s, size_t *size) {
 }
 
 uint8_t LogLocalHandler::errorFlagSet(uint8_t state) {
-    uint8_t protectedState = errorFlag;
+    uint8_t protectedState = logFile.errorFlag;
     if (state >= 0 && state <= 1)
     {
         protectedState = state;
     }
-    errorFlag = protectedState;
-    return errorFlag;
+    logFile.errorFlag = protectedState;
+    return logFile.errorFlag;
 }
 uint8_t LogLocalHandler::errorFlagState() {
-    return errorFlag;
+    return logFile.errorFlag;
 }
 uint8_t LogLocalHandler::errorFlagClear() {
     return LogLocalHandler::errorFlagSet(0);
