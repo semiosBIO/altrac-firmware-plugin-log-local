@@ -1,0 +1,10 @@
+#!/bin/bash
+
+\rm electron_firm* ;
+
+particle compile electron \
+	simple.cpp \
+	../../log-local.h ../../log-local.cpp \
+;
+
+particle flash --usb electron_firm* ;
