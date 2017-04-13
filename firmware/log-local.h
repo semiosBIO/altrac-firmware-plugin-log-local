@@ -31,9 +31,9 @@ class LogLocalHandler : public LogHandler {
       uint8_t log[LOG_LOCAL_ARRAY_SIZE];
       uint16_t size = LOG_LOCAL_ARRAY_SIZE;
       uint8_t errorFlag; 
+      uint8_t position;
     } logFile;
 
-    uint8_t position;
     uint16_t localLogSave;
 
     uint8_t firstRun = true;

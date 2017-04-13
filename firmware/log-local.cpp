@@ -26,17 +26,17 @@ void LogLocalHandler::log(String message, LogLevel level) {
     }
     for (int i = 0; i < messageLength; ++i)
     {
-        if (++position >= logFile.size)
+        if (++logFile.position >= logFile.size)
         {
-            position = 0;
+            logFile.position = 0;
         }
-        logFile.log[position] = message[i];
+        logFile.log[logFile.position] = message[i];
     }
-    if (++position >= logFile.size)
+    if (++logFile.position >= logFile.size)
     {
-        position = 0;
+        logFile.position = 0;
     }
-    logFile.log[position] = '\n';
+    logFile.log[logFile.position] = '\n';
 }
 
 LogLocalHandler::~LogLocalHandler() {
@@ -80,7 +80,9 @@ uint8_t LogLocalHandler::errorFlagState() {
     return logFile.errorFlag;
 }
 uint8_t LogLocalHandler::errorFlagClear() {
-    return LogLocalHandler::errorFlagSet(0);
+    LogLocalHandler::errorFlagSet(0);
+    LogLocalHandler::save();
+    return 0;
 }
 
 uint16_t LogLocalHandler::logLength() {
