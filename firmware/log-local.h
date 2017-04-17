@@ -25,14 +25,14 @@ class LogLocalHandler : public LogHandler {
     void save();
     void recall();
 
-  private:
-
     struct {
       uint8_t log[LOG_LOCAL_ARRAY_SIZE];
       uint16_t size = LOG_LOCAL_ARRAY_SIZE;
       uint8_t errorFlag; 
       uint8_t position;
     } logFile;
+
+  private:
 
     uint16_t localLogSave;
 
