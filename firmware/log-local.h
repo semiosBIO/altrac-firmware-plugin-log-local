@@ -18,6 +18,7 @@ class LogLocalHandler : public LogHandler {
     virtual ~LogLocalHandler();
     uint8_t errorFlagState();
     uint8_t errorFlagClear();
+    uint8_t errorFlagSet(uint8_t state);
 
     uint16_t logLength();
     uint8_t returnValue(uint8_t position);
@@ -37,8 +38,6 @@ class LogLocalHandler : public LogHandler {
     uint16_t localLogSave;
 
     uint8_t firstRun = true;
-
-    uint8_t errorFlagSet(uint8_t state);
 
     const char* extractFileName(const char *s);
     const char* extractFuncName(const char *s, size_t *size);
