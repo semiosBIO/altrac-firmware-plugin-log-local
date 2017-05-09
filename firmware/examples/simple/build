@@ -2,9 +2,11 @@
 
 \rm electron_firm* ;
 
-particle compile electron \
+particle compile electron --target 0.6.1 \
 	simple.cpp \
 	../../log-local.h ../../log-local.cpp \
 ;
+
+stty -f /dev/tty.usbmodem* 14400;
 
 particle flash --usb electron_firm* ;

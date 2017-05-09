@@ -1,17 +1,12 @@
 #include "log-local.h"
 
 LogLocalHandler::LogLocalHandler(uint16_t _localLogSave, LogLevel level, const LogCategoryFilters &filters) : LogHandler(level, filters), localLogSave(_localLogSave) {
+    ignoreLevel = level;
     LogManager::instance()->addHandler(this);
 }
 
 // this is where we can save the logging data
 void LogLocalHandler::log(String message, LogLevel level) {
-
-    if (firstRun)
-    {
-        LogLocalHandler::recall();
-        firstRun = false;
-    }
 
     if (level > LOG_LEVEL_WARN)
     {
@@ -30,7 +25,7 @@ void LogLocalHandler::log(String message, LogLevel level) {
         {
             logFile.position = 0;
         }
-        logFile.log[logFile.position] = message[i];
+        logFile.log[logFile.position] = (uint8_t)message[i];
     }
     if (++logFile.position >= logFile.size)
     {

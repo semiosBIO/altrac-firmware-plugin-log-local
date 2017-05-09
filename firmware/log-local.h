@@ -37,7 +37,7 @@ class LogLocalHandler : public LogHandler {
 
     uint16_t localLogSave;
 
-    uint8_t firstRun = true;
+    LogLevel ignoreLevel = LOG_LEVEL_INFO;
 
     const char* extractFileName(const char *s);
     const char* extractFuncName(const char *s, size_t *size);
