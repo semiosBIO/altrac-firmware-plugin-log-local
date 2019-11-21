@@ -31,7 +31,7 @@ void LogLocalHandler::log(String message, LogLevel level) {
     {
         logFile.position = 0;
     }
-    logFile.log[logFile.position] = '\n';
+    logFile.log[logFile.position] = ';';
 }
 
 LogLocalHandler::~LogLocalHandler() {
