@@ -25,7 +25,7 @@ void LogLocalHandler::log(String message, LogLevel level) {
         {
             logFile.position = 0;
         }
-        logFile.log[logFile.position] = (uint8_t)message[i];
+        logFile.log[logFile.position] = (uint8_t)message.charAt(i);
     }
     if (++logFile.position >= logFile.size)
     {
